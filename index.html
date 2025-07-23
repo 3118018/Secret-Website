@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Page</title>
+  <link rel="stylesheet" href="style.css">
+        <body>
+            <style>
+                body {
+                    background: #161616;
+                }
+            </style>
+            <h1>
+                <span style="
+                    background: linear-gradient(270deg, purple, pink, purple, pink,purple);
+                    background-size: 400% 100%;
+                    animation: gradientMove 4s ease-in-out infinite;
+                    background-size: 200% 100%;
+                    background-position: 0% 0%;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    color: transparent;
+                    animation: gradientMove 2s linear infinite;
+                    display: inline-block;
+                ">
+                    Secret
+                </span> 
+                <span style="color: white;">Website
+
+                </span>
+                <style>
+                @keyframes gradientMove {
+                    0% { background-position: 0% 0%; }
+                    100% { background-position: 100% 0%; }
+                }
+                </style>
+            </h1>
+            <text>
+                <span style="color: white;">This is a secret website that only you can access. Please do not share this link with anyone.
+            </text>
+            <h1>
+            </h1>
+            <button id="loginButton" class="dc" onclick="window.open('signup.html')">
+                Sign Up
+            </button> 
+        </body>
+    </head>
+</html>
