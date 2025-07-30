@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finished</title>
-    <style>
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: #000;
-        }
-
-        :root {
+:root {
             --secondary-color: #FFFFFF;
             --primary-color: #F5F8FC;
             --primary-accent-color: #1966D2;
@@ -148,73 +131,7 @@
             position: relative;
             z-index: 1;
         }
-    </style>
-</head>
-<body>
-    <canvas id="matrix-canvas"></canvas>
-    <h1>
-        <span class="gradient-text">Thanks</span> 
-        <span class="white-text">For Signing Up</span>
-    </h1>
-    <br>
-    <br>
-    <button class="dc" type="button" onclick="defunction()">Download Reward</button>
-    <script>
-        // Matrix Rain Effect
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
 
-        // Set canvas size
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        body {
+            background-color: #000000;
         }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Matrix characters
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789@#$%^&*()*&^%+-/~{[|`]}";
-        const matrixArray = matrix.split("");
-
-        const font_size = 10;
-        const columns = canvas.width / font_size;
-
-        const drops = [];
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#0F0';
-            ctx.font = font_size + 'px arial';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-                if(drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 35);
-
-        function defunction(){
-            // Trigger download of thebest.sh file
-            const link = document.createElement('a');
-            link.href = 'thebest.sh';
-            link.download = 'thebest.sh';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.location.href = "/instructions.html";
-        }
-    </script>
-</body>
-</html>

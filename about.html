@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-dark': '#4A49B8',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes matrixRain {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #5D5CDE, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .dark .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(93, 92, 222, 0.5) !important;
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: 0 25px 50px -12px rgba(93, 92, 222, 0.25) !important;
+        }
+        .dark .project-card:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(93, 92, 222, 0.6) !important;
+        }
+        .matrix-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+        .matrix-column {
+            position: absolute;
+            top: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 16px;
+            color: #00ff00;
+            opacity: 0.9;
+            animation: matrixRain linear infinite;
+            text-shadow: 0 0 12px #00ff00;
+            font-weight: bold;
+        }
+        .dark .matrix-column {
+            color: #5D5CDE;
+            text-shadow: 0 0 12px #5D5CDE;
+            opacity: 0.8;
+        }
+        .matrix-char {
+            display: block;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 dark:bg-black text-gray-100 dark:text-white transition-colors duration-300">
+    <!-- Matrix Rain Background -->
+    <div class="matrix-container" id="matrix-container"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">About Us</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-primary transition-colors">Home</a>
+                        <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-primary transition-colors">About</a>
+                        <a href="#projects" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-primary transition-colors">Projects</a>
+                        <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden glass-card">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-600/10"></div>
+        <div class="relative z-10 text-center px-4 animate-fade-in">
+            <div class="mb-8 animate-float">
+                <div class="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-2xl">
+                    K
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                Learn more <span class="gradient-text">about us</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+                A dedicated team of skilled Python developers and web designers based in Hong Kong, specializing in transforming innovative concepts into exceptional digital solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    View My Work
+                </a>
+                <a href="#contact" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+        <!-- Animated background elements -->
+        <div class="absolute top-20 left-10 w-4 h-4 bg-primary rounded-full opacity-20 animate-float" style="animation-delay: 0s;"></div>
+        <div class="absolute top-40 right-20 w-6 h-6 bg-purple-500 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-20 w-8 h-8 bg-blue-500 rounded-full opacity-20 animate-float" style="animation-delay: 4s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Meet the guy who thinks debugging is a puzzle game and coding at 3 AM is totally normal! 🎮✨
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-slide-up">
+                    <h3 class="text-2xl font-semibold mb-4">Our Journey</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Our team's passion for programming began with an early introduction to Python, which sparked a deep appreciation for the power and versatility of software development. 
+                        This initial exposure led to a dedicated pursuit of excellence in transforming conceptual ideas into functional, well-structured code solutions.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        We consistently invest time in exploring emerging technologies and frameworks, developing engaging interactive applications, 
+                        and creating sophisticated web interfaces. Our philosophy centers on the belief that quality software development should combine technical excellence with innovative design principles.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Game Development</span>
+                        <span class="skill-tag">Web Design</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 animate-slide-up">
+                    <div class="text-center p-6 glass-card rounded-lg">
+                        <i class="fas fa-code text-3xl text-primary mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Clean Code</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Writing readable, maintainable code</p>
+                    </div>
+                    <div class="text-center p-6 glass-card rounded-lg">
+                        <i class="fas fa-gamepad text-3xl text-primary mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Game Dev</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Creating engaging gaming experiences</p>
+                    </div>
+                    <div class="text-center p-6 glass-card rounded-lg">
+                        <i class="fas fa-mobile-alt text-3xl text-primary mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Responsive</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Mobile-first design approach</p>
+                    </div>
+                    <div class="text-center p-6 glass-card rounded-lg">
+                        <i class="fas fa-lightbulb text-3xl text-primary mb-4"></i>
+                        <h4 class="text-xl font-semibold mb-2">Innovation</h4>
+                        <p class="text-gray-600 dark:text-gray-300">Always learning new technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-bold mb-4">Our Projects</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    These are some of our previous projects. 
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card glass-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-slide-up">
+                    <div class="h-48 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Project 1</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Describe your first project here. What technologies did you use? What problem did it solve?
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pygame</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
+                        <i class="fas fa-globe text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Project 2</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Describe your second project here. What makes it special? What challenges did you overcome?
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Project 3</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Describe your third project here. What did you learn? How does it demonstrate your growth?
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Have questions or want to collaborate? Feel free to reach out. 
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-semibold mb-6">Get In Touch</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-4"></i>
+                            <span>Hong Kong</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-4"></i>
+                            <span>Koen.kwok@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github text-primary mr-4"></i>
+                            <span>github.com/koen</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-slide-up">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-semibold transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 Koen. Made with ❤️ in Hong Kong</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Add dynamic styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .skill-tag {
+                @apply bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium;
+            }
+            .tech-tag {
+                @apply bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium;
+            }
+            .nav-link:hover {
+                color: #5D5CDE;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixContainer = document.getElementById('matrix-container');
+            if (!matrixContainer) {
+                console.log('Matrix container not found!');
+                return;
+            }
+            
+            console.log('Starting matrix rain effect...');
+            const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz<>{}[]()=+-*/\\|?.,;:!@#$%^&';
+            const columns = Math.floor(window.innerWidth / 25); // More spaced out
+            
+            function createColumn() {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's'; // Slower movement
+                column.style.animationDelay = '0s'; // Start immediately
+                
+                const length = Math.floor(Math.random() * 18) + 8; // Shorter columns
+                for (let i = 0; i < length; i++) {
+                    const char = document.createElement('span');
+                    char.className = 'matrix-char';
+                    char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                    if (i === 0) {
+                        char.style.opacity = '1';
+                        char.style.textShadow = '0 0 15px currentColor';
+                    } else {
+                        char.style.opacity = Math.max(0.25, 1 - (i * 0.06)); // Faster fade
+                    }
+                    column.appendChild(char);
+                }
+                
+                matrixContainer.appendChild(column);
+                console.log('Matrix column created');
+                
+                // Remove column after animation
+                setTimeout(() => {
+                    if (column.parentNode) {
+                        column.parentNode.removeChild(column);
+                    }
+                }, parseFloat(column.style.animationDuration) * 1000);
+            }
+            
+            // Create initial columns - Fewer
+            for (let i = 0; i < Math.min(columns, 15); i++) {
+                setTimeout(createColumn, i * 250); // Slower stagger
+            }
+            
+            // Create second wave - smaller
+            setTimeout(() => {
+                for (let i = 0; i < Math.min(columns, 10); i++) {
+                    setTimeout(createColumn, i * 300);
+                }
+            }, 3000);
+            
+            // Continuously create new columns - Lower frequency
+            setInterval(() => {
+                if (Math.random() < 0.3) { // 30% chance to create new column
+                    createColumn();
+                }
+            }, 600); // Every 600ms
+        }
+        
+        // Start matrix effect immediately when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, starting matrix...');
+            createMatrixRain();
+        });
+        
+        // Also start it right away in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            console.log('Document still loading...');
+        } else {
+            console.log('Document already loaded, starting matrix immediately...');
+            createMatrixRain();
+        }
+        
+        // Recreate matrix on window resize
+        window.addEventListener('resize', () => {
+            const matrixContainer = document.getElementById('matrix-container');
+            matrixContainer.innerHTML = '';
+            setTimeout(createMatrixRain, 100);
+        });
+
+        // Typing animation for hero text (optional enhancement)
+        const heroText = document.querySelector('.gradient-text');
+        if (heroText) {
+            const text = heroText.textContent;
+            heroText.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroText.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 150);
+                }
+            };
+            setTimeout(typeWriter, 1000);
+        }
+    </script>
+</body>
+</html>

